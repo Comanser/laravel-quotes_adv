@@ -24,6 +24,15 @@
             {{ Session::get('fail') }}
         </div>
     @endif
+    @if (count($errors) > 0)
+        <div class="info-box fail">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     @if(Session::has('success'))
         <div class="info-box success">
             {{ Session::get('success') }}
@@ -53,6 +62,10 @@
             <div class="input-group">
                 <label for="author">Your Name</label>
                 <input type="text" id="author" name="author" placeholder="Your Name">
+            </div>
+            <div class="input-group">
+                <label for="email">Your E-Mail</label>
+                <input type="email" id="email" name="email" placeholder="Your E-Mail">
             </div>
             <div class="input-group">
                 <label for="quote">Your Quote</label>
